@@ -3,43 +3,51 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>POLIPONI 2026 | REGULER TIKET </title>
+<title>POLIPONI 2026 | LIVE QUEUE SYSTEM</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
 font-family:Arial,Helvetica,sans-serif;
-background:#0d0d0d;
 color:#fff;
 overflow:hidden;
-transition:opacity .6s ease;
 }
 
-/* GRID + GLOW */
-body:before{
-content:'';
-position:fixed;inset:0;
-background-image:
-linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-background-size:30px 30px;
-animation:gridMove 25s linear infinite;
+/* BACKGROUND IMAGE (FIX) */
+.bg-img{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+/* OVERLAY */
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.6);
 z-index:-1;
 }
-@keyframes gridMove{to{transform:translate(-60px,-60px)}}
 
+/* BOX */
 .box{
 position:absolute;
 top:50%;left:50%;
 transform:translate(-50%,-50%);
 width:95%;max-width:600px;
-background:#111;
-border:2px solid #333;
-box-shadow:0 0 40px rgba(0,255,200,0.2);
+background:rgba(0,0,0,0.75);
+border:2px solid #00ffd5;
+box-shadow:0 0 40px rgba(0,255,200,0.3);
 padding:25px;
 border-radius:12px;
+backdrop-filter:blur(8px);
 }
 
+/* LOGO */
 .logo{
 font-size:42px;
 font-weight:900;
@@ -49,9 +57,14 @@ color:#00ffd5;
 text-shadow:0 0 10px #00ffd5;
 }
 
-.sub{text-align:center;margin-top:5px;font-size:13px;opacity:.7}
+.sub{
+text-align:center;
+margin-top:5px;
+font-size:13px;
+opacity:.7
+}
 
-/* LIVE METRICS */
+/* METRICS */
 .metrics{
 display:flex;
 justify-content:space-between;
@@ -59,14 +72,14 @@ margin-top:20px;
 font-size:14px;
 }
 .metrics div{
-background:#000;
+background:rgba(0,0,0,0.6);
 padding:10px;
-border:1px solid #333;
+border:1px solid #00ffd5;
 width:32%;
 text-align:center;
 }
 
-/* QUEUE BIG */
+/* QUEUE */
 .queue{
 margin-top:25px;
 text-align:center;
@@ -92,18 +105,17 @@ background:linear-gradient(90deg,#00ffd5,#00ff88);
 transition:width .5s;
 }
 
-/* LIVE FEED */
+/* FEED */
 .feed{
 margin-top:20px;
 height:120px;
 overflow:hidden;
 font-size:12px;
-background:#000;
+background:rgba(0,0,0,0.6);
 padding:10px;
-border:1px solid #333;
+border:1px solid #00ffd5;
 }
-.feed p{opacity:.8;animation:fadeIn .3s}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.feed p{opacity:.8}
 
 /* BUTTON */
 .btn{
@@ -117,37 +129,25 @@ font-weight:900;
 cursor:pointer;
 opacity:.3;
 pointer-events:none;
-transition:.3s;
 }
 .btn.active{
 opacity:1;
 pointer-events:auto;
-box-shadow:0 0 15px #00ffd5;
 }
 
-/* SCANNER EFFECT */
-.scan{
-position:absolute;
-top:0;left:0;
-width:100%;height:3px;
-background:#00ffd5;
-box-shadow:0 0 10px #00ffd5;
-animation:scan 2s infinite;
-}
-@keyframes scan{
-0%{top:0}
-100%{top:100%}
-}
 </style>
 </head>
 
 <body>
 
+<!-- BACKGROUND -->
+<img src="background.jpg" class="bg-img">
+<div class="overlay"></div>
+
 <div class="box">
-<div class="scan"></div>
 
 <div class="logo">POLIPONI</div>
-<div class="sub">LIVE TICKET QUEUE SYSTEM</div>
+<div class="sub">TIKET REGULER DIBUKA</div>
 
 <div class="metrics">
 <div>👥 Online<br><b id="online">1200</b></div>
@@ -178,8 +178,6 @@ let percent=0;
 
 const feed=document.getElementById('feed');
 const btn=document.getElementById('btn');
-
-let locked = false;
 
 const messages=[
 "User #A21 berhasil masuk",
@@ -231,14 +229,10 @@ if(queue<=3){
 },1000);
 
 function enter(){
- if(locked) return;
- locked = true;
-
  document.body.style.opacity=0;
-
  setTimeout(()=>{
-   window.location.href="https://alyssamutiara3-cyber.github.io/SHEILA-ON-7/";
- },700);
+   window.location.href="https://alyssamutiara3-cyber.github.io/TIKET-SHEILA-ON-7/";
+ },800);
 }
 </script>
 
